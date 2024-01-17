@@ -98,9 +98,6 @@ module Octokit
           http.request :url_encoded
           http.use Octokit::Response::RaiseError
           http.adapter Faraday.default_adapter
-          if @use_http_cache
-            http.use Faraday::HttpCache, @http_cache_options
-          end
         end
 
         conn.post do |req|
