@@ -56,8 +56,8 @@ module Octokit
 
     attr_accessor :access_token, :auto_paginate, :bearer_token, :client_id,
                   :client_secret, :default_media_type, :connection_options,
-                  :middleware, :netrc, :netrc_file,
-                  :per_page, :proxy, :ssl_verify_mode, :user_agent
+                  :http_cache_options, :middleware, :netrc, :netrc_file,
+                  :per_page, :proxy, :ssl_verify_mode, :use_http_cache, :user_agent
     attr_writer :password, :web_endpoint, :api_endpoint, :login,
                 :management_console_endpoint, :management_console_password
 
@@ -74,6 +74,7 @@ module Octokit
           client_secret
           connection_options
           default_media_type
+          http_cache_options
           login
           management_console_endpoint
           management_console_password
@@ -84,6 +85,7 @@ module Octokit
           password
           proxy
           ssl_verify_mode
+          use_http_cache
           user_agent
           web_endpoint
         ]

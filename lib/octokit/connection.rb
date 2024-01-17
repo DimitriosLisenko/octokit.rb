@@ -115,6 +115,9 @@ module Octokit
         elsif application_authenticated?
           http.request(*FARADAY_BASIC_AUTH_KEYS, @client_id, @client_secret)
         end
+        if @use_http_cache
+          http.use Faraday::HttpCache, @http_cache_options
+        end
       end
     end
 
