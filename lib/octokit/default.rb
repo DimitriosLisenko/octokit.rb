@@ -90,6 +90,13 @@ module Octokit
         ENV.fetch('OCTOKIT_SECRET', nil)
       end
 
+      def http_cache_options
+        {
+          serializer: Marshal,
+          shared_cache: false
+        }
+      end
+
       # Default management console password from ENV
       # @return [String]
       def management_console_password
@@ -159,6 +166,10 @@ module Octokit
         # 1 is OpenSSL::SSL::SSL_VERIFY_PEER
         # the standard default for SSL is SSL_VERIFY_PEER which requires a server certificate check on the client
         ENV.fetch('OCTOKIT_SSL_VERIFY_MODE', 1).to_i
+      end
+
+      def use_http_cache
+        false
       end
 
       # Default User-Agent header string from ENV or {USER_AGENT}

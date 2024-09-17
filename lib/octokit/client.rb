@@ -269,6 +269,9 @@ module Octokit
           http.request :authorization, 'Bearer', @bearer_token
         end
         http.headers['accept'] = options[:accept] if options.key?(:accept)
+        if @use_http_cache
+          http.use Faraday::HttpCache, @http_cache_options
+        end
       end
       conn.builder.delete(Octokit::Middleware::FollowRedirects)
 
